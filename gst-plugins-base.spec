@@ -86,7 +86,6 @@ plug-ins.
 Group: 		System/Libraries
 Summary: 	GStreamer plugin libraries
 Suggests:	gst-install-plugins-helper
-Obsoletes:	%{name}
 
 %description -n %{oname}-plugins-base
 GStreamer is a streaming-media framework, based on graphs of filters which
@@ -292,7 +291,6 @@ GStreamer support libraries header files.
 Summary:	Gstreamer plugin for CD audio input using CDParanoia IV
 Group:		Sound
 Requires:	%{name} = %{version}-%{release}
-Obsoletes:	%{name}-cdparanoia
 
 %description -n	%{oname}-cdparanoia
 Plugin for ripping audio tracks using cdparanoia under GStreamer
@@ -302,7 +300,6 @@ Plugin for ripping audio tracks using cdparanoia under GStreamer
 Summary:	GStreamer visualisations plug-in based on libvisual
 Group:		Video
 Requires:	%{name} = %{version}-%{release}
-Obsoletes:	%{name}-libvisual
 
 %description -n	%{oname}-libvisual
 This plugin makes visualisations based on libvisual available for
