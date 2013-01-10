@@ -4,6 +4,8 @@
 %define enable_check 0
 
 %define sname	gst
+%define oname	gstreamer%{api}
+
 %define major	0
 %define api	1.0
 %define	libapp	%mklibname %{sname}app %{api} %{major}
@@ -31,7 +33,7 @@
 Summary: 	GStreamer Streaming-media framework plug-ins
 Name: 		gst-plugins-base
 Version: 	1.0.5
-Release: 	1
+Release: 	2
 License: 	LGPLv2+
 Group: 		Sound
 URL:		http://gstreamer.freedesktop.org/
@@ -72,9 +74,21 @@ BuildRequires: gtk-doc
 BuildRequires: fonts-ttf-dejavu
 %endif
 
-Suggests: gst-install-plugins-helper
-
 %description
+GStreamer is a streaming-media framework, based on graphs of filters which
+operate on media data. Applications using this library can do anything
+from real-time sound processing to playing videos, and just about anything
+else media-related.  Its plugin-based architecture means that new data
+types or processing capabilities can be added simply by installing new
+plug-ins.
+
+%package -n %{oname}-plugins-base
+Group: 		System/Libraries
+Summary: 	GStreamer plugin libraries
+Suggests:	gst-install-plugins-helper
+Obsoletes:	%{name}
+
+%description -n %{oname}-plugins-base
 GStreamer is a streaming-media framework, based on graphs of filters which
 operate on media data. Applications using this library can do anything
 from real-time sound processing to playing videos, and just about anything
@@ -274,21 +288,23 @@ Provides:	gstreamer-plugins-base-devel = %{version}-%{release}
 %description -n %{devname}
 GStreamer support libraries header files.
 
-%package	cdparanoia
+%package -n	%{oname}-cdparanoia
 Summary:	Gstreamer plugin for CD audio input using CDParanoia IV
 Group:		Sound
 Requires:	%{name} = %{version}-%{release}
+Obsoletes:	%{name}-cdparanoia
 
-%description	cdparanoia
+%description -n	%{oname}-cdparanoia
 Plugin for ripping audio tracks using cdparanoia under GStreamer
 
 %if %{build_libvisual}
-%package	libvisual
+%package -n	%{oname}-libvisual
 Summary:	GStreamer visualisations plug-in based on libvisual
 Group:		Video
 Requires:	%{name} = %{version}-%{release}
+Obsoletes:	%{name}-libvisual
 
-%description	libvisual
+%description -n	%{oname}-libvisual
 This plugin makes visualisations based on libvisual available for
 GStreamer applications.
 %endif
@@ -318,7 +334,7 @@ cd tests/check
 %makeinstall_std
 %find_lang %{name}-%{api}
 
-%files -f %{name}-%{api}.lang
+%files -n %{oname}-plugins-base -f %{name}-%{api}.lang
 %doc AUTHORS COPYING README NEWS
 %{_bindir}/gst-discoverer-%{api}
 %dir %{_datadir}/gst-plugins-base
@@ -455,11 +471,11 @@ cd tests/check
 %{_datadir}/gir-1.0/GstTag-%{api}.gir
 %{_datadir}/gir-1.0/GstVideo-%{api}.gir
 
-%files cdparanoia
+%files -n %{oname}-cdparanoia
 %{_libdir}/gstreamer-%{api}/libgstcdparanoia.so
 
 %if %{build_libvisual}
-%files libvisual
+%files -n %{oname}-libvisual
 %{_libdir}/gstreamer-%{api}/libgstlibvisual.so
 %endif
 
