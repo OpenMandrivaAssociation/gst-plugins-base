@@ -83,7 +83,7 @@ types or processing capabilities can be added simply by installing new
 plug-ins.
 
 %package -n %{oname}-plugins-base
-Group: 		System/Libraries
+Group: 		Sound
 Summary: 	GStreamer plugin libraries
 Suggests:	gst-install-plugins-helper
 
