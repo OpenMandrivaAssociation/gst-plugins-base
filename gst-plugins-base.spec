@@ -26,14 +26,14 @@
 %define	girsdp	%mklibname %{sname}sdp-gir %{api}
 %define	libtag	%mklibname %{sname}tag %{api} %{major}
 %define	girtag	%mklibname %{sname}tag-gir %{api}
-%define	girvideo	%mklibname %{sname}video %{api} %{major}
-%define	libvideo	%mklibname %{sname}video-gir
+%define	libvideo	%mklibname %{sname}video %{api} %{major}
+%define	girvideo	%mklibname %{sname}video-gir
 %define devname	%mklibname %{name} %{api} -d
 
 Summary: 	GStreamer Streaming-media framework plug-ins
 Name: 		gst-plugins-base
 Version: 	1.0.5
-Release: 	2
+Release: 	3
 License: 	LGPLv2+
 Group: 		Sound
 URL:		http://gstreamer.freedesktop.org/
