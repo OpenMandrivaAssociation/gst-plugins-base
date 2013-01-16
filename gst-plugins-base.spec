@@ -112,6 +112,7 @@ plugins, and helper libraries:
 %package -n %{libapp}
 Group: 		System/Libraries
 Summary: 	GStreamer plugin libraries
+Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
 
 %description -n %{libapp}
 This package contain the basic audio and video playback library and
@@ -120,6 +121,7 @@ the interfaces library.
 %package -n %{girapp}
 Summary:	GObject Introspection interface libraries for %{libapp}
 Group:		System/Libraries
+Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
 
 %description -n %{girapp}
 GObject Introspection interface libraries for %{libapp}.
@@ -127,6 +129,7 @@ GObject Introspection interface libraries for %{libapp}.
 %package -n %{libaudio}
 Group: 		System/Libraries
 Summary: 	GStreamer plugin libraries
+Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
 
 %description -n %{libaudio}
 This package contain the basic audio and video playback library and
@@ -135,6 +138,7 @@ the interfaces library.
 %package -n %{giraudio}
 Summary:	GObject Introspection interface libraries for %{libaudio}
 Group:		System/Libraries
+Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
 
 %description -n %{giraudio}
 GObject Introspection interface libraries for %{libaudio}.
@@ -142,6 +146,7 @@ GObject Introspection interface libraries for %{libaudio}.
 %package -n %{libfft}
 Group: 		System/Libraries
 Summary: 	GStreamer plugin libraries
+Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
 
 %description -n %{libfft}
 This package contain the basic audio and video playback library and
@@ -150,6 +155,7 @@ the interfaces library.
 %package -n %{girfft}
 Summary:	GObject Introspection interface libraries for %{libfft}
 Group:		System/Libraries
+Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
 
 %description -n %{girfft}
 GObject Introspection interface libraries for %{libfft}.
@@ -157,6 +163,7 @@ GObject Introspection interface libraries for %{libfft}.
 %package -n %{libpbutils}
 Group: 		System/Libraries
 Summary: 	GStreamer plugin libraries
+Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
 
 %description -n %{libpbutils}
 This package contain the basic audio and video playback library and
@@ -165,6 +172,7 @@ the interfaces library.
 %package -n %{girpbutils}
 Summary:	GObject Introspection interface libraries for %{libpbutils}
 Group:		System/Libraries
+Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
 
 %description -n %{girpbutils}
 GObject Introspection interface libraries for %{libpbutils}.
@@ -172,6 +180,7 @@ GObject Introspection interface libraries for %{libpbutils}.
 %package -n %{libriff}
 Group: 		System/Libraries
 Summary: 	GStreamer plugin libraries
+Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
 
 %description -n %{libriff}
 This package contain the basic audio and video playback library and
@@ -180,6 +189,7 @@ the interfaces library.
 %package -n %{girriff}
 Summary:	GObject Introspection interface libraries for %{libriff}
 Group:		System/Libraries
+Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
 
 %description -n %{girriff}
 GObject Introspection interface libraries for %{libriff}.
@@ -187,6 +197,7 @@ GObject Introspection interface libraries for %{libriff}.
 %package -n %{librtp}
 Group: 		System/Libraries
 Summary: 	GStreamer plugin libraries
+Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
 
 %description -n %{librtp}
 This package contain the basic audio and video playback library and
@@ -195,6 +206,7 @@ the interfaces library.
 %package -n %{girrtp}
 Summary:	GObject Introspection interface libraries for %{librtp}
 Group:		System/Libraries
+Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
 
 %description -n %{girrtp}
 GObject Introspection interface libraries for %{librtp}.
@@ -202,6 +214,7 @@ GObject Introspection interface libraries for %{librtp}.
 %package -n %{librtsp}
 Group: 		System/Libraries
 Summary: 	GStreamer plugin libraries
+Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
 
 %description -n %{librtsp}
 This package contain the basic audio and video playback library and
@@ -210,6 +223,7 @@ the interfaces library.
 %package -n %{girrtsp}
 Summary:	GObject Introspection interface libraries for %{librtsp}
 Group:		System/Libraries
+Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
 
 %description -n %{girrtsp}
 GObject Introspection interface libraries for %{librtsp}.
@@ -217,6 +231,7 @@ GObject Introspection interface libraries for %{librtsp}.
 %package -n %{libsdp}
 Group: 		System/Libraries
 Summary: 	GStreamer plugin libraries
+Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
 
 %description -n %{libsdp}
 This package contain the basic audio and video playback library and
@@ -225,6 +240,7 @@ the interfaces library.
 %package -n %{girsdp}
 Summary:	GObject Introspection interface libraries for %{libsdp}
 Group:		System/Libraries
+Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
 
 %description -n %{girsdp}
 GObject Introspection interface libraries for %{libsdp}.
@@ -232,6 +248,7 @@ GObject Introspection interface libraries for %{libsdp}.
 %package -n %{libtag}
 Group: 		System/Libraries
 Summary: 	GStreamer plugin libraries
+Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
 
 %description -n %{libtag}
 This package contain the basic audio and video playback library and
@@ -240,6 +257,7 @@ the interfaces library.
 %package -n %{girtag}
 Summary:	GObject Introspection interface libraries for %{libtag}
 Group:		System/Libraries
+Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
 
 %description -n %{girtag}
 GObject Introspection interface libraries for %{libtag}.
@@ -247,6 +265,7 @@ GObject Introspection interface libraries for %{libtag}.
 %package -n %{libvideo}
 Group: 		System/Libraries
 Summary: 	GStreamer plugin libraries
+Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
 
 %description -n %{libvideo}
 This package contain the basic audio and video playback library and
@@ -255,6 +274,7 @@ the interfaces library.
 %package -n %{girvideo}
 Summary:	GObject Introspection interface libraries for %{libvideo}
 Group:		System/Libraries
+Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
 
 %description -n %{girvideo}
 GObject Introspection interface libraries for %{libvideo}.
