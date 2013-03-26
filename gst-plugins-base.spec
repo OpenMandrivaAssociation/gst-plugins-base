@@ -310,7 +310,7 @@ GStreamer support libraries header files.
 %package -n	%{oname}-cdparanoia
 Summary:	Gstreamer plugin for CD audio input using CDParanoia IV
 Group:		Sound
-Requires:	%{oname}-plugins-base = %{version}-%{releas}
+Requires:	%{oname}-plugins-base = %{version}-%{release}
 
 %description -n	%{oname}-cdparanoia
 Plugin for ripping audio tracks using cdparanoia under GStreamer
@@ -319,7 +319,7 @@ Plugin for ripping audio tracks using cdparanoia under GStreamer
 %package -n	%{oname}-libvisual
 Summary:	GStreamer visualisations plug-in based on libvisual
 Group:		Video
-Requires:	%{oname}-plugins-base = %{version}-%{releas}
+Requires:	%{oname}-plugins-base = %{version}-%{release}
 
 %description -n	%{oname}-libvisual
 This plugin makes visualisations based on libvisual available for
