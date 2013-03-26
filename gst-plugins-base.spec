@@ -3,75 +3,75 @@
 %define build_qtexamples 0
 %define enable_check 0
 
-%define sname	gst
-%define oname	gstreamer%{api}
+%define sname gst
+%define oname gstreamer%{api}
 
-%define major	0
-%define api	1.0
-%define	libapp	%mklibname %{sname}app %{api} %{major}
-%define	girapp	%mklibname %{sname}app-gir %{api}
-%define	libaudio	%mklibname %{sname}audio %{api} %{major}
-%define	giraudio	%mklibname %{sname}audio-gir %{api}
-%define	libfft	%mklibname %{sname}fft %{api} %{major}
-%define	girfft	%mklibname %{sname}fft-gir %{api}
-%define	libpbutils	%mklibname %{sname}pbutils %{api} %{major}
-%define	girpbutils	%mklibname %{sname}pbutils-gir %{api}
-%define	libriff	%mklibname %{sname}riff %{api} %{major}
-%define	girriff	%mklibname %{sname}riff-gir %{api}
-%define	librtp	%mklibname %{sname}rtp %{api} %{major}
-%define	girrtp	%mklibname %{sname}rtp-gir %{api}
-%define	librtsp	%mklibname %{sname}rtsp %{api} %{major}
-%define	girrtsp	%mklibname %{sname}rtsp-gir %{api}
-%define	libsdp	%mklibname %{sname}sdp %{api} %{major}
-%define	girsdp	%mklibname %{sname}sdp-gir %{api}
-%define	libtag	%mklibname %{sname}tag %{api} %{major}
-%define	girtag	%mklibname %{sname}tag-gir %{api}
-%define	libvideo	%mklibname %{sname}video %{api} %{major}
-%define	girvideo	%mklibname %{sname}video-gir
-%define devname	%mklibname %{name} %{api} -d
+%define major 0
+%define api 1.0
+%define libapp %mklibname %{sname}app %{api} %{major}
+%define girapp %mklibname %{sname}app-gir %{api}
+%define libaudio %mklibname %{sname}audio %{api} %{major}
+%define giraudio %mklibname %{sname}audio-gir %{api}
+%define libfft %mklibname %{sname}fft %{api} %{major}
+%define girfft %mklibname %{sname}fft-gir %{api}
+%define libpbutils %mklibname %{sname}pbutils %{api} %{major}
+%define girpbutils %mklibname %{sname}pbutils-gir %{api}
+%define libriff %mklibname %{sname}riff %{api} %{major}
+%define girriff %mklibname %{sname}riff-gir %{api}
+%define librtp %mklibname %{sname}rtp %{api} %{major}
+%define girrtp %mklibname %{sname}rtp-gir %{api}
+%define librtsp %mklibname %{sname}rtsp %{api} %{major}
+%define girrtsp %mklibname %{sname}rtsp-gir %{api}
+%define libsdp %mklibname %{sname}sdp %{api} %{major}
+%define girsdp %mklibname %{sname}sdp-gir %{api}
+%define libtag %mklibname %{sname}tag %{api} %{major}
+%define girtag %mklibname %{sname}tag-gir %{api}
+%define libvideo %mklibname %{sname}video %{api} %{major}
+%define girvideo %mklibname %{sname}video-gir
+%define devname %mklibname %{name} %{api} -d
 
-Summary: 	GStreamer Streaming-media framework plug-ins
-Name: 		gst-plugins-base
-Version: 	1.0.5
-Release: 	4
-License: 	LGPLv2+
-Group: 		Sound
+Summary:	GStreamer Streaming-media framework plug-ins
+Name:		gst-plugins-base
+Version:	1.0.5
+Release: 	5
+License:	LGPLv2+
+Group:		Sound
 URL:		http://gstreamer.freedesktop.org/
-Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/gst-plugins-base/%{api}/%{name}-%{version}.tar.xz
-Patch0: 	align.patch
+Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/gst-plugins-base/%{api}/%{name}-%{version}.tar.xz
+Patch0:		align.patch
 
-BuildRequires: libcdda-devel
-BuildRequires: pkgconfig(alsa)
-BuildRequires: pkgconfig(check)
-BuildRequires: pkgconfig(glib-2.0)
-BuildRequires: pkgconfig(glu)
-BuildRequires: pkgconfig(gnome-vfs-2.0)
-BuildRequires: pkgconfig(gobject-introspection-1.0)
-BuildRequires: pkgconfig(gstreamer-1.0)
-BuildRequires: pkgconfig(gtk+-2.0)
-BuildRequires: pkgconfig(libpng)
-BuildRequires: pkgconfig(orc-0.4)
-BuildRequires: pkgconfig(theora)
-BuildRequires: pkgconfig(vorbis)
-BuildRequires: pkgconfig(xv)
+BuildRequires:	libcdda-devel
+BuildRequires:	pkgconfig(alsa)
+BuildRequires:	pkgconfig(check)
+BuildRequires:	pkgconfig(glib-2.0)
+BuildRequires:	pkgconfig(glu)
+BuildRequires:	pkgconfig(gnome-vfs-2.0)
+BuildRequires:	pkgconfig(gobject-introspection-1.0)
+BuildRequires:	pkgconfig(gstreamer-1.0)
+BuildRequires:	pkgconfig(gtk+-2.0)
+BuildRequires:	pkgconfig(libpng)
+BuildRequires:	pkgconfig(orc-0.4)
+BuildRequires:	pkgconfig(theora)
+BuildRequires:	pkgconfig(vorbis)
+BuildRequires:	pkgconfig(xv)
 %if %{build_libvisual}
-BuildRequires: pkgconfig(libvisual-0.4) >= 0.4
+BuildRequires:	pkgconfig(libvisual-0.4) >= 0.4
 %endif
 %ifarch %ix86
-BuildRequires: nasm => 0.90
+BuildRequires:	nasm => 0.90
 %endif
 %ifnarch %arm %mips
-BuildRequires: valgrind
+BuildRequires:	valgrind
 %endif
 %if %{build_qtexamples}
 BuildRequires:	qt4-devel
 %endif
 %if %{build_docs}
-BuildRequires: gtk-doc
+BuildRequires:	gtk-doc
 %endif
 %if %{enable_check}
 #gw we need some fonts for the tests
-BuildRequires: fonts-ttf-dejavu
+BuildRequires:	fonts-ttf-dejavu
 %endif
 
 %description
@@ -83,8 +83,8 @@ types or processing capabilities can be added simply by installing new
 plug-ins.
 
 %package -n %{oname}-plugins-base
-Group: 		Sound
-Summary: 	GStreamer plugin libraries
+Group:		Sound
+Summary:	GStreamer plugin libraries
 Suggests:	gst-install-plugins-helper
 
 %description -n %{oname}-plugins-base
@@ -110,8 +110,8 @@ plugins, and helper libraries:
  * aggregate elements: decodebin, playbin
 
 %package -n %{libapp}
-Group: 		System/Libraries
-Summary: 	GStreamer plugin libraries
+Group:		System/Libraries
+Summary:	GStreamer plugin libraries
 Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
 
 %description -n %{libapp}
@@ -127,8 +127,8 @@ Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
 GObject Introspection interface libraries for %{libapp}.
 
 %package -n %{libaudio}
-Group: 		System/Libraries
-Summary: 	GStreamer plugin libraries
+Group:		System/Libraries
+Summary:	GStreamer plugin libraries
 Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
 
 %description -n %{libaudio}
@@ -144,8 +144,8 @@ Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
 GObject Introspection interface libraries for %{libaudio}.
 
 %package -n %{libfft}
-Group: 		System/Libraries
-Summary: 	GStreamer plugin libraries
+Group:		System/Libraries
+Summary:	GStreamer plugin libraries
 Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
 
 %description -n %{libfft}
@@ -161,8 +161,8 @@ Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
 GObject Introspection interface libraries for %{libfft}.
 
 %package -n %{libpbutils}
-Group: 		System/Libraries
-Summary: 	GStreamer plugin libraries
+Group:		System/Libraries
+Summary:	GStreamer plugin libraries
 Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
 
 %description -n %{libpbutils}
@@ -178,8 +178,8 @@ Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
 GObject Introspection interface libraries for %{libpbutils}.
 
 %package -n %{libriff}
-Group: 		System/Libraries
-Summary: 	GStreamer plugin libraries
+Group:		System/Libraries
+Summary:	GStreamer plugin libraries
 Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
 
 %description -n %{libriff}
@@ -195,8 +195,8 @@ Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
 GObject Introspection interface libraries for %{libriff}.
 
 %package -n %{librtp}
-Group: 		System/Libraries
-Summary: 	GStreamer plugin libraries
+Group:		System/Libraries
+Summary:	GStreamer plugin libraries
 Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
 
 %description -n %{librtp}
@@ -212,8 +212,8 @@ Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
 GObject Introspection interface libraries for %{librtp}.
 
 %package -n %{librtsp}
-Group: 		System/Libraries
-Summary: 	GStreamer plugin libraries
+Group:		System/Libraries
+Summary:	GStreamer plugin libraries
 Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
 
 %description -n %{librtsp}
@@ -229,8 +229,8 @@ Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
 GObject Introspection interface libraries for %{librtsp}.
 
 %package -n %{libsdp}
-Group: 		System/Libraries
-Summary: 	GStreamer plugin libraries
+Group:		System/Libraries
+Summary:	GStreamer plugin libraries
 Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
 
 %description -n %{libsdp}
@@ -246,8 +246,8 @@ Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
 GObject Introspection interface libraries for %{libsdp}.
 
 %package -n %{libtag}
-Group: 		System/Libraries
-Summary: 	GStreamer plugin libraries
+Group:		System/Libraries
+Summary:	GStreamer plugin libraries
 Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
 
 %description -n %{libtag}
@@ -263,8 +263,8 @@ Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
 GObject Introspection interface libraries for %{libtag}.
 
 %package -n %{libvideo}
-Group: 		System/Libraries
-Summary: 	GStreamer plugin libraries
+Group:		System/Libraries
+Summary:	GStreamer plugin libraries
 Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
 
 %description -n %{libvideo}
@@ -280,8 +280,8 @@ Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
 GObject Introspection interface libraries for %{libvideo}.
 
 %package -n %{devname}
-Summary: 	GStreamer Plugin Library Headers
-Group: 		Development/C
+Summary:	GStreamer Plugin Library Headers
+Group:		Development/C
 Requires:	%{libapp} = %{version}-%{release}
 Requires:	%{girapp} = %{version}-%{release}
 Requires:	%{libaudio} = %{version}-%{release}
@@ -310,7 +310,7 @@ GStreamer support libraries header files.
 %package -n	%{oname}-cdparanoia
 Summary:	Gstreamer plugin for CD audio input using CDParanoia IV
 Group:		Sound
-Requires:	%{name} = %{version}-%{release}
+Requires:	%{name} = %{version}
 
 %description -n	%{oname}-cdparanoia
 Plugin for ripping audio tracks using cdparanoia under GStreamer
@@ -319,7 +319,7 @@ Plugin for ripping audio tracks using cdparanoia under GStreamer
 %package -n	%{oname}-libvisual
 Summary:	GStreamer visualisations plug-in based on libvisual
 Group:		Video
-Requires:	%{name} = %{version}-%{release}
+Requires:	%{name} = %{version}
 
 %description -n	%{oname}-libvisual
 This plugin makes visualisations based on libvisual available for
