@@ -40,7 +40,7 @@ URL:		http://gstreamer.freedesktop.org/
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/gst-plugins-base/%{api}/%{name}-%{version}.tar.xz
 Patch0:		align.patch
 
-BuildRequires:	libcdda-devel
+BuildRequires:	cdda-devel
 BuildRequires:	pkgconfig(alsa)
 BuildRequires:	pkgconfig(check)
 BuildRequires:	pkgconfig(glib-2.0)
