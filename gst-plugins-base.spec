@@ -33,10 +33,10 @@
 Summary:	GStreamer Streaming-media framework plug-ins
 Name:		gst-plugins-base
 Version:	1.0.5
-Release: 	5
+Release:	5
 License:	LGPLv2+
 Group:		Sound
-URL:		http://gstreamer.freedesktop.org/
+Url:		http://gstreamer.freedesktop.org/
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/gst-plugins-base/%{api}/%{name}-%{version}.tar.xz
 Patch0:		align.patch
 
