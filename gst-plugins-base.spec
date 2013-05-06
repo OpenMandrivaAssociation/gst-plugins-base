@@ -27,13 +27,13 @@
 %define libtag %mklibname %{sname}tag %{api} %{major}
 %define girtag %mklibname %{sname}tag-gir %{api}
 %define libvideo %mklibname %{sname}video %{api} %{major}
-%define girvideo %mklibname %{sname}video-gir
+%define girvideo %mklibname %{sname}video-gir %{api}
 %define devname %mklibname %{name} %{api} -d
 
 Summary:	GStreamer Streaming-media framework plug-ins
 Name:		gst-plugins-base
 Version:	1.0.5
-Release:	5
+Release:	6
 License:	LGPLv2+
 Group:		Sound
 Url:		http://gstreamer.freedesktop.org/
@@ -275,6 +275,7 @@ the interfaces library.
 Summary:	GObject Introspection interface libraries for %{libvideo}
 Group:		System/Libraries
 Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
+Obsoletes:	%{_lib}gst-video-gir < 1.0.5-6
 
 %description -n %{girvideo}
 GObject Introspection interface libraries for %{libvideo}.
