@@ -440,6 +440,9 @@ cd tests/check
 %files -n %{libvideo}
 %{_libdir}/libgstvideo-%{api}.so.%{major}*
 
+%files -n %{girallocators}
+%{_libdir}/girepository-1.0/GstAllocators-%{api}.typelib
+
 %files -n %{girapp}
 %{_libdir}/girepository-1.0/GstApp-%{api}.typelib
 
