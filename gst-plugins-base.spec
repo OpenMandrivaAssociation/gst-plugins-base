@@ -8,6 +8,8 @@
 
 %define major 0
 %define api 1.0
+%define liballocators %mklibname %{sname}allocators %{api} %{major}
+%define girallocators %mklibname %{sname}allocators-gir %{api}
 %define libapp %mklibname %{sname}app %{api} %{major}
 %define girapp %mklibname %{sname}app-gir %{api}
 %define libaudio %mklibname %{sname}audio %{api} %{major}
@@ -32,8 +34,8 @@
 
 Summary:	GStreamer Streaming-media framework plug-ins
 Name:		gst-plugins-base
-Version:	1.0.5
-Release:	7
+Version:	1.2.3
+Release:	1
 License:	LGPLv2+
 Group:		Sound
 Url:		http://gstreamer.freedesktop.org/
@@ -108,6 +110,23 @@ plugins, and helper libraries:
  * visualisation: libvisual
  * video processing: ffmpegcolorspace
  * aggregate elements: decodebin, playbin
+
+%package -n %{liballocators}
+Group:          System/Libraries
+Summary:        GStreamer plugin libraries
+Obsoletes:      %{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
+
+%description -n %{liballocators}
+This package contain the basic audio and video playback library and
+the interfaces library.
+
+%package -n %{girallocators}
+Summary:        GObject Introspection interface libraries for %{liballocators}
+Group:          System/Libraries
+Obsoletes:      %{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
+
+%description -n %{girallocators}
+GObject Introspection interface libraries for %{liballocators}.
 
 %package -n %{libapp}
 Group:		System/Libraries
@@ -283,6 +302,8 @@ GObject Introspection interface libraries for %{libvideo}.
 %package -n %{devname}
 Summary:	GStreamer Plugin Library Headers
 Group:		Development/C
+Requires:       %{liballocators} = %{version}-%{release}
+Requires:       %{girallocators} = %{version}-%{release}
 Requires:	%{libapp} = %{version}-%{release}
 Requires:	%{girapp} = %{version}-%{release}
 Requires:	%{libaudio} = %{version}-%{release}
@@ -355,8 +376,10 @@ cd tests/check
 %files -n %{oname}-plugins-base -f %{name}-%{api}.lang
 %doc AUTHORS COPYING README NEWS
 %{_bindir}/gst-discoverer-%{api}
+%{_bindir}/gst-play-%{api}
 %dir %{_datadir}/gst-plugins-base
 %{_datadir}/gst-plugins-base/%{api}/license-translations.dict
+%{_mandir}/man1/gst-play-%{api}.1*
 %{_mandir}/man1/gst-discoverer-%{api}.1*
 # non-core plugins without external dependencies
 %{_libdir}/gstreamer-%{api}/libgstalsa.so
@@ -383,6 +406,9 @@ cd tests/check
 %{_libdir}/gstreamer-%{api}/libgstvorbis.so
 %{_libdir}/gstreamer-%{api}/libgstximagesink.so
 %{_libdir}/gstreamer-%{api}/libgstxvimagesink.so
+
+%files -n %{liballocators}
+%{_libdir}/libgstallocators-%{api}.so.%{major}*
 
 %files -n %{libapp}
 %{_libdir}/libgstapp-%{api}.so.%{major}*
@@ -413,6 +439,9 @@ cd tests/check
 
 %files -n %{libvideo}
 %{_libdir}/libgstvideo-%{api}.so.%{major}*
+
+%files -n %{girallocators}
+%{_libdir}/girepository-1.0/GstAllocators-%{api}.typelib
 
 %files -n %{girapp}
 %{_libdir}/girepository-1.0/GstApp-%{api}.typelib
@@ -446,6 +475,7 @@ cd tests/check
 
 %files -n %{devname}
 %doc docs/libs/html docs/plugins/html
+%{_includedir}/gstreamer-%{api}/gst/allocators
 %{_includedir}/gstreamer-%{api}/gst/app/
 %{_includedir}/gstreamer-%{api}/gst/audio
 %{_includedir}/gstreamer-%{api}/gst/fft
@@ -456,6 +486,7 @@ cd tests/check
 %{_includedir}/gstreamer-%{api}/gst/tag/
 %{_includedir}/gstreamer-%{api}/gst/video/
 %{_includedir}/gstreamer-%{api}/gst/rtp
+%{_libdir}/pkgconfig/gstreamer-allocators-%{api}.pc
 %{_libdir}/pkgconfig/gstreamer-app-%{api}.pc
 %{_libdir}/pkgconfig/gstreamer-audio-%{api}.pc
 %{_libdir}/pkgconfig/gstreamer-fft-%{api}.pc
@@ -467,6 +498,7 @@ cd tests/check
 %{_libdir}/pkgconfig/gstreamer-sdp-%{api}.pc
 %{_libdir}/pkgconfig/gstreamer-tag-%{api}.pc
 %{_libdir}/pkgconfig/gstreamer-video-%{api}.pc
+%{_libdir}/libgstallocators-%{api}.so
 %{_libdir}/libgstaudio-%{api}.so
 %{_libdir}/libgstapp-%{api}.so
 %{_libdir}/libgstfft-%{api}.so
@@ -478,6 +510,7 @@ cd tests/check
 %{_libdir}/libgstsdp-%{api}.so
 %{_libdir}/libgstvideo-%{api}.so
 %{_datadir}/gtk-doc/html/*
+%{_datadir}/gir-1.0/GstAllocators-%{api}.gir
 %{_datadir}/gir-1.0/GstApp-%{api}.gir
 %{_datadir}/gir-1.0/GstAudio-%{api}.gir
 %{_datadir}/gir-1.0/GstFft-%{api}.gir
