@@ -294,7 +294,7 @@ the interfaces library.
 Summary:	GObject Introspection interface libraries for %{libvideo}
 Group:		System/Libraries
 Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
-Obsoletes:	%{_lib}gst-video-gir < 1.0.5-6
+Obsoletes:	%{_lib}gstvideo-gir < 1.0.5-6
 
 %description -n %{girvideo}
 GObject Introspection interface libraries for %{libvideo}.
