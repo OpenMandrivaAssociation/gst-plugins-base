@@ -378,6 +378,7 @@ cd tests/check
 %{_bindir}/gst-discoverer-%{api}
 %{_bindir}/gst-play-%{api}
 %dir %{_datadir}/gst-plugins-base
+%dir %{_datadir}/gst-plugins-base/%{api}
 %{_datadir}/gst-plugins-base/%{api}/license-translations.dict
 %{_mandir}/man1/gst-play-%{api}.1*
 %{_mandir}/man1/gst-discoverer-%{api}.1*
