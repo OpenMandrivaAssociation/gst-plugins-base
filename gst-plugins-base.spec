@@ -34,8 +34,8 @@
 
 Summary:	GStreamer Streaming-media framework plug-ins
 Name:		gst-plugins-base
-Version:	1.2.4
-Release:	3
+Version:	1.4.3
+Release:	1
 License:	LGPLv2+
 Group:		Sound
 Url:		http://gstreamer.freedesktop.org/
@@ -375,11 +375,13 @@ cd tests/check
 
 %files -n %{oname}-plugins-base -f %{name}-%{api}.lang
 %doc AUTHORS COPYING README NEWS
+%{_bindir}/gst-device-monitor-%{api}
 %{_bindir}/gst-discoverer-%{api}
 %{_bindir}/gst-play-%{api}
 %dir %{_datadir}/gst-plugins-base
 %dir %{_datadir}/gst-plugins-base/%{api}
 %{_datadir}/gst-plugins-base/%{api}/license-translations.dict
+%{_mandir}/man1/gst-device-monitor-%{api}.1*
 %{_mandir}/man1/gst-play-%{api}.1*
 %{_mandir}/man1/gst-discoverer-%{api}.1*
 # non-core plugins without external dependencies
