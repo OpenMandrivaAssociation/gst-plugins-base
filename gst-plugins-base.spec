@@ -34,12 +34,12 @@
 
 Summary:	GStreamer Streaming-media framework plug-ins
 Name:		gst-plugins-base
-Version:	1.2.3
+Version:	1.4.5
 Release:	1
 License:	LGPLv2+
 Group:		Sound
 Url:		http://gstreamer.freedesktop.org/
-Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/gst-plugins-base/%{api}/%{name}-%{version}.tar.xz
+Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/gst-plugins-base/1.4/%{name}-%{version}.tar.xz
 Patch0:		align.patch
 
 BuildRequires:	cdda-devel
@@ -62,7 +62,7 @@ BuildRequires:	pkgconfig(libvisual-0.4) >= 0.4
 %ifarch %ix86
 BuildRequires:	nasm => 0.90
 %endif
-%ifnarch %arm %mips
+%ifnarch %arm %mips aarch64
 BuildRequires:	valgrind
 %endif
 %if %{build_qtexamples}
@@ -294,7 +294,7 @@ the interfaces library.
 Summary:	GObject Introspection interface libraries for %{libvideo}
 Group:		System/Libraries
 Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
-Obsoletes:	%{_lib}gst-video-gir < 1.0.5-6
+Obsoletes:	%{_lib}gstvideo-gir < 1.0.5-6
 
 %description -n %{girvideo}
 GObject Introspection interface libraries for %{libvideo}.
@@ -375,10 +375,13 @@ cd tests/check
 
 %files -n %{oname}-plugins-base -f %{name}-%{api}.lang
 %doc AUTHORS COPYING README NEWS
+%{_bindir}/gst-device-monitor-%{api}
 %{_bindir}/gst-discoverer-%{api}
 %{_bindir}/gst-play-%{api}
 %dir %{_datadir}/gst-plugins-base
+%dir %{_datadir}/gst-plugins-base/%{api}
 %{_datadir}/gst-plugins-base/%{api}/license-translations.dict
+%{_mandir}/man1/gst-device-monitor-%{api}.1*
 %{_mandir}/man1/gst-play-%{api}.1*
 %{_mandir}/man1/gst-discoverer-%{api}.1*
 # non-core plugins without external dependencies
