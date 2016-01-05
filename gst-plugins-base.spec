@@ -19,7 +19,6 @@
 %define libpbutils %mklibname %{sname}pbutils %{api} %{major}
 %define girpbutils %mklibname %{sname}pbutils-gir %{api}
 %define libriff %mklibname %{sname}riff %{api} %{major}
-%define girriff %mklibname %{sname}riff-gir %{api}
 %define librtp %mklibname %{sname}rtp %{api} %{major}
 %define girrtp %mklibname %{sname}rtp-gir %{api}
 %define librtsp %mklibname %{sname}rtsp %{api} %{major}
@@ -34,12 +33,12 @@
 
 Summary:	GStreamer Streaming-media framework plug-ins
 Name:		gst-plugins-base
-Version:	1.4.5
-Release:	2
+Version:	1.6.2
+Release:	1
 License:	LGPLv2+
 Group:		Sound
 Url:		http://gstreamer.freedesktop.org/
-Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/gst-plugins-base/1.4/%{name}-%{version}.tar.xz
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gst-plugins-base/1.6/%{name}-%{version}.tar.xz
 Patch0:		align.patch
 
 BuildRequires:	cdda-devel
@@ -47,7 +46,6 @@ BuildRequires:	pkgconfig(alsa)
 BuildRequires:	pkgconfig(check)
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(glu)
-BuildRequires:	pkgconfig(gnome-vfs-2.0)
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
 BuildRequires:	pkgconfig(gstreamer-1.0)
 BuildRequires:	pkgconfig(gtk+-2.0)
@@ -205,14 +203,6 @@ Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
 This package contain the basic audio and video playback library and
 the interfaces library.
 
-%package -n %{girriff}
-Summary:	GObject Introspection interface libraries for %{libriff}
-Group:		System/Libraries
-Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
-
-%description -n %{girriff}
-GObject Introspection interface libraries for %{libriff}.
-
 %package -n %{librtp}
 Group:		System/Libraries
 Summary:	GStreamer plugin libraries
@@ -313,7 +303,6 @@ Requires:	%{girfft} = %{version}-%{release}
 Requires:	%{libpbutils} = %{version}-%{release}
 Requires:	%{girpbutils} = %{version}-%{release}
 Requires:	%{libriff} = %{version}-%{release}
-Requires:	%{girriff} = %{version}-%{release}
 Requires:	%{librtp} = %{version}-%{release}
 Requires:	%{girrtp} = %{version}-%{release}
 Requires:	%{librtsp} = %{version}-%{release}
@@ -458,9 +447,6 @@ cd tests/check
 %files -n %{girpbutils}
 %{_libdir}/girepository-1.0/GstPbutils-%{api}.typelib
 
-%files -n %{girriff}
-%{_libdir}/girepository-1.0/GstRiff-%{api}.typelib
-
 %files -n %{girrtp}
 %{_libdir}/girepository-1.0/GstRtp-%{api}.typelib
 
@@ -518,7 +504,6 @@ cd tests/check
 %{_datadir}/gir-1.0/GstAudio-%{api}.gir
 %{_datadir}/gir-1.0/GstFft-%{api}.gir
 %{_datadir}/gir-1.0/GstPbutils-%{api}.gir
-%{_datadir}/gir-1.0/GstRiff-%{api}.gir
 %{_datadir}/gir-1.0/GstRtp-%{api}.gir
 %{_datadir}/gir-1.0/GstRtsp-%{api}.gir
 %{_datadir}/gir-1.0/GstSdp-%{api}.gir
