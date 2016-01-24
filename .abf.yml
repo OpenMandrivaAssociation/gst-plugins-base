@@ -1,5 +1,2 @@
-removed_sources:
-  gst-plugins-base-1.4.4.tar.xz: f46c9f096a641623b6d69f6c1aaba0c87a1dd71e
-  gst-plugins-base-1.4.5.tar.xz: 3f7d493d61e286a913f3c8a13be08f41437d3f89
 sources:
-  gst-plugins-base-1.6.2.tar.xz: 85d55c2083ded125297b93361188e67445ed6c52
+  gst-plugins-base-1.6.3.tar.xz: cb760920adde59926b0bee95a91fa64c920bb123

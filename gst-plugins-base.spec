@@ -33,7 +33,7 @@
 
 Summary:	GStreamer Streaming-media framework plug-ins
 Name:		gst-plugins-base
-Version:	1.6.2
+Version:	1.6.3
 Release:	1
 License:	LGPLv2+
 Group:		Sound
@@ -342,7 +342,7 @@ GStreamer applications.
 %apply_patches
 
 %build
-%configure2_5x \
+%configure \
 	--disable-static \
 	--disable-dependency-tracking \
 	--enable-experimental \
