@@ -33,7 +33,7 @@
 
 Summary:	GStreamer Streaming-media framework plug-ins
 Name:		gst-plugins-base
-Version:	1.8.1
+Version:	1.10.2
 Release:	1
 License:	LGPLv2+
 Group:		Sound
@@ -351,7 +351,7 @@ GStreamer applications.
 	--with-package-origin='http://www.openmandriva.org/' \
 	--enable-libvisual
 
-%make
+%make CXXFLAGS+="-std=gnu++14"
 
 %if %{enable_check}
 %check
