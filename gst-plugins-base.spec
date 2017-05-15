@@ -400,7 +400,6 @@ cd tests/check
 %{_libdir}/gstreamer-%{api}/libgstximagesink.so
 %{_libdir}/gstreamer-%{api}/libgstxvimagesink.so
 %{_libdir}/gstreamer-%{api}/libgstencoding.so
-%{_libdir}/gstreamer-%{api}/libgstencoding.so
 %{_libdir}/gstreamer-%{api}/libgstpbtypes.so
 %{_libdir}/gstreamer-%{api}/libgstrawparse.so
 
