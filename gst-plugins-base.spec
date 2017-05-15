@@ -33,7 +33,7 @@
 
 Summary:	GStreamer Streaming-media framework plug-ins
 Name:		gst-plugins-base
-Version:	1.10.2
+Version:	1.12.0
 Release:	1
 License:	LGPLv2+
 Group:		Sound
@@ -382,7 +382,6 @@ cd tests/check
 %{_libdir}/gstreamer-%{api}/libgstaudiorate.so
 %{_libdir}/gstreamer-%{api}/libgstaudioresample.so
 %{_libdir}/gstreamer-%{api}/libgstaudiotestsrc.so
-%{_libdir}/gstreamer-%{api}/libgstencodebin.so
 %{_libdir}/gstreamer-%{api}/libgstgio.so
 %{_libdir}/gstreamer-%{api}/libgstogg.so
 %{_libdir}/gstreamer-%{api}/libgstopus.so
@@ -400,6 +399,10 @@ cd tests/check
 %{_libdir}/gstreamer-%{api}/libgstvorbis.so
 %{_libdir}/gstreamer-%{api}/libgstximagesink.so
 %{_libdir}/gstreamer-%{api}/libgstxvimagesink.so
+%{_libdir}/gstreamer-%{api}/libgstencoding.so
+%{_libdir}/gstreamer-%{api}/libgstencoding.so
+%{_libdir}/gstreamer-%{api}/libgstpbtypes.so
+%{_libdir}/gstreamer-%{api}/libgstrawparse.so
 
 %files -n %{liballocators}
 %{_libdir}/libgstallocators-%{api}.so.%{major}*
