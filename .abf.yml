@@ -1,2 +1,4 @@
-sources:
+removed_sources:
   gst-plugins-base-1.12.3.tar.xz: b4048ae387b99ed72b2cf38bcdac37ce739147ce
+sources:
+  gst-plugins-base-1.13.1.tar.xz: dcf4eb449f039738c7a79070d53206159e394d07
