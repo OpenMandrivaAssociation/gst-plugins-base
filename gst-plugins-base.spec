@@ -56,6 +56,11 @@ BuildRequires:	pkgconfig(orc-0.4)
 BuildRequires:	pkgconfig(theora)
 BuildRequires:	pkgconfig(vorbis)
 BuildRequires:	pkgconfig(xv)
+BuildRequires:	pkgconfig(valgrind)
+BuildRequires:	pkgconfig(gudev-1.0)
+BuildRequires:	pkgconfig(glesv2)
+BuildRequires:	pkgconfig(wayland-egl)
+pkgconfig(sdl2)
 %if %{build_libvisual}
 BuildRequires:	pkgconfig(libvisual-0.4) >= 0.4
 %endif
@@ -66,7 +71,7 @@ BuildRequires:	nasm => 0.90
 BuildRequires:	valgrind
 %endif
 %if %{build_qtexamples}
-BuildRequires:	qt4-devel
+BuildRequires:	qt5-devel
 %endif
 %if %{build_docs}
 BuildRequires:	gtk-doc
@@ -368,8 +373,7 @@ GStreamer applications.
 %endif
 
 %prep
-%setup -q
-%apply_patches
+%autosetup -p1
 
 %build
 %configure \
@@ -381,7 +385,7 @@ GStreamer applications.
 	--enable-libvisual
 export CC=gcc
 export CXX=g++
-%make CXXFLAGS+="-std=gnu++14"
+%make_build CXXFLAGS+="-std=gnu++14"
 
 %if %{enable_check}
 %check
@@ -390,7 +394,7 @@ cd tests/check
 %endif
 
 %install
-%makeinstall_std
+%make_install
 %find_lang %{name}-%{api}
 
 %files -n %{oname}-plugins-base -f %{name}-%{api}.lang
