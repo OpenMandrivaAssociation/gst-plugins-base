@@ -60,7 +60,7 @@ BuildRequires:	pkgconfig(valgrind)
 BuildRequires:	pkgconfig(gudev-1.0)
 BuildRequires:	pkgconfig(glesv2)
 BuildRequires:	pkgconfig(wayland-egl)
-pkgconfig(sdl2)
+BuildRequires:	pkgconfig(sdl2)
 %if %{build_libvisual}
 BuildRequires:	pkgconfig(libvisual-0.4) >= 0.4
 %endif
