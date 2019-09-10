@@ -56,7 +56,9 @@ BuildRequires:	pkgconfig(orc-0.4)
 BuildRequires:	pkgconfig(theora)
 BuildRequires:	pkgconfig(vorbis)
 BuildRequires:	pkgconfig(xv)
+%ifnarch %{riscv}
 BuildRequires:	pkgconfig(valgrind)
+%endif
 BuildRequires:	pkgconfig(gudev-1.0)
 BuildRequires:	pkgconfig(glesv2)
 BuildRequires:	pkgconfig(wayland-egl)
