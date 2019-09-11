@@ -56,9 +56,6 @@ BuildRequires:	pkgconfig(orc-0.4)
 BuildRequires:	pkgconfig(theora)
 BuildRequires:	pkgconfig(vorbis)
 BuildRequires:	pkgconfig(xv)
-%ifnarch %{riscv}
-BuildRequires:	pkgconfig(valgrind)
-%endif
 BuildRequires:	pkgconfig(gudev-1.0)
 BuildRequires:	pkgconfig(glesv2)
 BuildRequires:	pkgconfig(wayland-egl)
@@ -69,8 +66,9 @@ BuildRequires:	pkgconfig(libvisual-0.4) >= 0.4
 %ifarch %ix86
 BuildRequires:	nasm => 0.90
 %endif
-%ifnarch %arm %mips aarch64
+%ifnarch %armx %mips %{riscv}
 BuildRequires:	valgrind
+BuildRequires:	pkgconfig(valgrind)
 %endif
 %if %{build_qtexamples}
 BuildRequires:	qt5-devel
