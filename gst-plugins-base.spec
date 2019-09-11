@@ -43,6 +43,11 @@ Url:		http://gstreamer.freedesktop.org/
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gst-plugins-base/%(echo %{version}|cut -d. -f1-2)/%{name}-%{version}.tar.xz
 Patch0:		align.patch
 BuildRequires:	cdda-devel
+BuildRequires:	meson
+BuildRequires:	iso-codes-devel
+BuildRequires:	pkgconfig(libjpeg)
+BuildRequires:	pkgconfig(graphene-1.0)
+BuildRequires:	pkgconfig(vorbis)
 BuildRequires:	pkgconfig(alsa)
 BuildRequires:	pkgconfig(check)
 BuildRequires:	pkgconfig(glib-2.0)
@@ -376,16 +381,11 @@ GStreamer applications.
 %autosetup -p1
 
 %build
-%configure \
-	--disable-static \
-	--disable-dependency-tracking \
-	--enable-experimental \
-	--with-package-name='OpenMandriva %{name} package' \
-	--with-package-origin='http://www.openmandriva.org/' \
-	--enable-libvisual
-export CC=gcc
-export CXX=g++
-%make_build CXXFLAGS+="-std=gnu++14"
+#export CC=gcc
+#export CXX=g++
+export CXXFLAGS+="%{optflags} -std=gnu++14"
+%meson -Dtremor=disabled -Dexamples=disabled -Dgtk_doc=disabled
+%meson_build
 
 %if %{enable_check}
 %check
@@ -394,7 +394,7 @@ cd tests/check
 %endif
 
 %install
-%make_install
+%meson_install
 %find_lang %{name}-%{api}
 
 %files -n %{oname}-plugins-base -f %{name}-%{api}.lang
@@ -549,7 +549,7 @@ cd tests/check
 %{_libdir}/gstreamer-%{api}/libgstcompositor.so
 %{_libdir}/gstreamer-%{api}/libgstoverlaycomposition.so
 
-%{_datadir}/gtk-doc/html/*
+#% {_datadir}/gtk-doc/html/*
 %{_datadir}/gir-1.0/GstAllocators-%{api}.gir
 %{_datadir}/gir-1.0/GstApp-%{api}.gir
 %{_datadir}/gir-1.0/GstAudio-%{api}.gir
