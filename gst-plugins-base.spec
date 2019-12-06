@@ -36,7 +36,7 @@
 Summary:	GStreamer Streaming-media framework plug-ins
 Name:		gst-plugins-base
 Version:	1.16.2
-Release:	1
+Release:	2
 License:	LGPLv2+
 Group:		Sound
 Url:		http://gstreamer.freedesktop.org/
@@ -64,7 +64,11 @@ BuildRequires:	pkgconfig(xv)
 BuildRequires:	pkgconfig(gudev-1.0)
 BuildRequires:	pkgconfig(glesv2)
 BuildRequires:	pkgconfig(wayland-egl)
+BuildRequires:	pkgconfig(wayland-protocols)
 BuildRequires:	pkgconfig(sdl2)
+BuildRequires:	pkgconfig(libdrm)
+BuildRequires:	pkgconfig(gbm)
+BuildRequires:	kernel-release-headers
 %if %{build_libvisual}
 BuildRequires:	pkgconfig(libvisual-0.4) >= 0.4
 %endif
@@ -123,18 +127,18 @@ plugins, and helper libraries:
  * aggregate elements: decodebin, playbin
 
 %package -n %{liballocators}
-Group:          System/Libraries
-Summary:        GStreamer plugin libraries
-Obsoletes:      %{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
+Group:		System/Libraries
+Summary:	GStreamer plugin libraries
+Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
 
 %description -n %{liballocators}
 This package contain the basic audio and video playback library and
 the interfaces library.
 
 %package -n %{girallocators}
-Summary:        GObject Introspection interface libraries for %{liballocators}
-Group:          System/Libraries
-Obsoletes:      %{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
+Summary:	GObject Introspection interface libraries for %{liballocators}
+Group:		System/Libraries
+Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
 
 %description -n %{girallocators}
 GObject Introspection interface libraries for %{liballocators}.
@@ -165,14 +169,12 @@ Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
 This package contain the basic audio and video playback library and
 the interfaces library.
 
-
 %package -n %{libaudiomixer}
-Group:<><------>System/Libraries
-Summary:<------>GStreamer plugin libraries
+Group:		System/Libraries
+Summary:	GStreamer plugin libraries
 
 %description -n %{libaudiomixer}
 This package contain the basic audiomixer library.
-
 
 %package -n %{giraudio}
 Summary:	GObject Introspection interface libraries for %{libaudio}
@@ -327,12 +329,11 @@ Group:		System/Libraries
 %description -n %{libgl}
 This package contain the gst opengl library.
 
-
 %package -n %{devname}
 Summary:	GStreamer Plugin Library Headers
 Group:		Development/C
-Requires:       %{liballocators} = %{version}-%{release}
-Requires:       %{girallocators} = %{version}-%{release}
+Requires:	%{liballocators} = %{version}-%{release}
+Requires:	%{girallocators} = %{version}-%{release}
 Requires:	%{libapp} = %{version}-%{release}
 Requires:	%{girapp} = %{version}-%{release}
 Requires:	%{libaudio} = %{version}-%{release}
@@ -381,8 +382,6 @@ GStreamer applications.
 %autosetup -p1
 
 %build
-#export CC=gcc
-#export CXX=g++
 export CXXFLAGS+="%{optflags} -std=gnu++14"
 %meson -Dtremor=disabled -Dexamples=disabled -Dgtk_doc=disabled
 %meson_build
@@ -438,7 +437,6 @@ cd tests/check
 %{_libdir}/gstreamer-%{api}/libgstencoding.so
 %{_libdir}/gstreamer-%{api}/libgstpbtypes.so
 %{_libdir}/gstreamer-%{api}/libgstrawparse.so
-
 
 %files -n %{liballocators}
 %{_libdir}/libgstallocators-%{api}.so.%{major}*
@@ -568,4 +566,3 @@ cd tests/check
 %files -n %{oname}-libvisual
 %{_libdir}/gstreamer-%{api}/libgstlibvisual.so
 %endif
-
