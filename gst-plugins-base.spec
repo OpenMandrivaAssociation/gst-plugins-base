@@ -1,3 +1,8 @@
+# gst-plugins-base is used by wine
+%ifarch %{x86_64}
+%bcond_without compat32
+%endif
+
 %define build_libvisual 1
 %define build_docs 0
 %define build_qtexamples 0
@@ -32,11 +37,24 @@
 %define libgl %mklibname %{sname}gl %{api} %{major}
 %define devname %mklibname %{name} %{api} -d
 
+%define lib32allocators %mklib32name %{sname}allocators %{api} %{major}
+%define lib32app %mklib32name %{sname}app %{api} %{major}
+%define lib32audio %mklib32name %{sname}audio %{api} %{major}
+%define lib32fft %mklib32name %{sname}fft %{api} %{major}
+%define lib32pbutils %mklib32name %{sname}pbutils %{api} %{major}
+%define lib32riff %mklib32name %{sname}riff %{api} %{major}
+%define lib32rtp %mklib32name %{sname}rtp %{api} %{major}
+%define lib32rtsp %mklib32name %{sname}rtsp %{api} %{major}
+%define lib32sdp %mklib32name %{sname}sdp %{api} %{major}
+%define lib32tag %mklib32name %{sname}tag %{api} %{major}
+%define lib32video %mklib32name %{sname}video %{api} %{major}
+%define lib32gl %mklib32name %{sname}gl %{api} %{major}
+%define dev32name %mklib32name %{name} %{api} -d
 
 Summary:	GStreamer Streaming-media framework plug-ins
 Name:		gst-plugins-base
 Version:	1.16.2
-Release:	2
+Release:	3
 License:	LGPLv2+
 Group:		Sound
 Url:		http://gstreamer.freedesktop.org/
@@ -59,7 +77,6 @@ BuildRequires:	pkgconfig(libpng)
 BuildRequires:	pkgconfig(opus)
 BuildRequires:	pkgconfig(orc-0.4)
 BuildRequires:	pkgconfig(theora)
-BuildRequires:	pkgconfig(vorbis)
 BuildRequires:	pkgconfig(xv)
 BuildRequires:	pkgconfig(gudev-1.0)
 BuildRequires:	pkgconfig(glesv2)
@@ -88,6 +105,56 @@ BuildRequires:	gtk-doc
 %if %{enable_check}
 #gw we need some fonts for the tests
 BuildRequires:	fonts-ttf-dejavu
+%endif
+%if %{with compat32}
+BuildRequires:	devel(libjpeg)
+BuildRequires:	devel(libvorbis)
+BuildRequires:	devel(libogg)
+BuildRequires:	devel(libasound)
+BuildRequires:	devel(libglib-2.0)
+BuildRequires:	devel(libSDL2-2.0)
+BuildRequires:	devel(libdrm)
+BuildRequires:	devel(libgbm)
+BuildRequires:	devel(libwayland-egl)
+BuildRequires:	devel(libOpenGL)
+BuildRequires:	devel(libGL)
+BuildRequires:	devel(libGLU)
+BuildRequires:	devel(libXv)
+BuildRequires:	devel(libpango-1.0)
+BuildRequires:	devel(libpangocairo-1.0)
+BuildRequires:	devel(libpangoft2-1.0)
+BuildRequires:	devel(libcairo)
+BuildRequires:	devel(libX11)
+BuildRequires:	devel(libxcb)
+BuildRequires:	devel(libXau)
+BuildRequires:	devel(libXdmcp)
+BuildRequires:	devel(libz)
+BuildRequires:	devel(liblzma)
+BuildRequires:	devel(libffi)
+BuildRequires:	devel(libgio-2.0)
+BuildRequires:	devel(libmount)
+BuildRequires:	devel(libblkid)
+BuildRequires:	devel(libgstreamer-1.0)
+BuildRequires:	devel(libunwind)
+BuildRequires:	devel(libdw)
+BuildRequires:	devel(libgmodule-2.0)
+BuildRequires:	devel(libpcre)
+BuildRequires:	devel(libgobject-2.0)
+BuildRequires:	devel(libgstbase-1.0)
+BuildRequires:	devel(liborc-0.4)
+BuildRequires:	devel(libpng16)
+BuildRequires:	devel(libopus)
+BuildRequires:	devel(libpangoft2-1.0)
+BuildRequires:	devel(libfribidi)
+BuildRequires:	devel(libharfbuzz)
+BuildRequires:	devel(libfontconfig)
+BuildRequires:	devel(libfreetype)
+BuildRequires:	devel(libXrender)
+BuildRequires:	devel(libXft)
+BuildRequires:	devel(libbz2)
+BuildRequires:	devel(libXext)
+BuildRequires:	devel(libpixman-1)
+BuildRequires:	devel(libexpat)
 %endif
 
 %description
@@ -169,13 +236,6 @@ Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
 This package contain the basic audio and video playback library and
 the interfaces library.
 
-%package -n %{libaudiomixer}
-Group:		System/Libraries
-Summary:	GStreamer plugin libraries
-
-%description -n %{libaudiomixer}
-This package contain the basic audiomixer library.
-
 %package -n %{giraudio}
 Summary:	GObject Introspection interface libraries for %{libaudio}
 Group:		System/Libraries
@@ -224,8 +284,7 @@ Summary:	GStreamer plugin libraries
 Obsoletes:	%{_lib}gstreamer-plugins-base1.0_0 < 1.0.5-1
 
 %description -n %{libriff}
-This package contain the basic audio and video playback 
-library and
+This package contain the basic audio and video playback library and
 the interfaces library.
 
 %package -n %{librtp}
@@ -378,12 +437,146 @@ This plugin makes visualisations based on libvisual available for
 GStreamer applications.
 %endif
 
+%if %{with compat32}
+%package -n %{lib32allocators}
+Group:		System/Libraries
+Summary:	GStreamer plugin libraries (32-bit)
+
+%description -n %{lib32allocators}
+This package contain the basic audio and video playback library and
+the interfaces library.
+
+%package -n %{lib32app}
+Group:		System/Libraries
+Summary:	GStreamer plugin libraries (32-bit)
+
+%description -n %{lib32app}
+This package contain the basic audio and video playback library and
+the interfaces library.
+
+%package -n %{lib32audio}
+Summary:	GStreamer plugin libraries (32-bit)
+Group:		System/Libraries
+
+%description -n %{lib32audio}
+This package contain the basic audio and video playback library and
+the interfaces library.
+
+%package -n %{lib32fft}
+Summary:	GStreamer plugin libraries (32-bit)
+Group:		System/Libraries
+
+%description -n %{lib32fft}
+This package contain the basic audio and video playback library and
+the interfaces library.
+
+%package -n %{lib32pbutils}
+Summary:	GStreamer plugin libraries (32-bit)
+Group:		System/Libraries
+
+%description -n %{lib32pbutils}
+This package contain the basic audio and video playback library and
+the interfaces library.
+
+%package -n %{lib32riff}
+Summary:	GStreamer plugin libraries (32-bit)
+Group:		System/Libraries
+
+%description -n %{lib32riff}
+This package contain the basic audio and video playback
+library and the interfaces library.
+
+%package -n %{lib32rtp}
+Summary:	GStreamer plugin libraries (32-bit)
+Group:		System/Libraries
+
+%description -n %{lib32rtp}
+This package contain the basic audio and video playback library and
+the interfaces library.
+
+%package -n %{lib32rtsp}
+Summary:	GStreamer plugin libraries (32-bit)
+Group:		System/Libraries
+
+%description -n %{lib32rtsp}
+This package contain the basic audio and video playback library and
+the interfaces library.
+
+%package -n %{lib32sdp}
+Summary:	GStreamer plugin libraries (32-bit)
+Group:		System/Libraries
+
+%description -n %{lib32sdp}
+This package contain the basic audio and video playback library and
+the interfaces library.
+
+%package -n %{lib32tag}
+Summary:	GStreamer plugin libraries (32-bit)
+Group:		System/Libraries
+
+%description -n %{lib32tag}
+This package contain the basic audio and video playback library and
+the interfaces library.
+
+%package -n %{lib32video}
+Summary:	GStreamer plugin libraries (32-bit)
+Group:		System/Libraries
+
+%description -n %{lib32video}
+This package contain the basic audio and video playback library and
+the interfaces library.
+
+%package -n %{lib32gl}
+Summary:	Gstreamer plugin libraries for %{libgl} (32-bit)
+Group:		System/Libraries
+
+%description -n %{lib32gl}
+This package contain the gst opengl library.
+
+%package -n %{dev32name}
+Summary:	GStreamer Plugin Library Headers (32-bit)
+Group:		Development/C
+Requires:	%{devname} = %{version}-%{release}
+Requires:	%{lib32allocators} = %{version}-%{release}
+Requires:	%{lib32app} = %{version}-%{release}
+Requires:	%{lib32audio} = %{version}-%{release}
+Requires:	%{lib32fft} = %{version}-%{release}
+Requires:	%{lib32pbutils} = %{version}-%{release}
+Requires:	%{lib32riff} = %{version}-%{release}
+Requires:	%{lib32rtp} = %{version}-%{release}
+Requires:	%{lib32rtsp} = %{version}-%{release}
+Requires:	%{lib32sdp} = %{version}-%{release}
+Requires:	%{lib32tag} = %{version}-%{release}
+Requires:	%{lib32video} = %{version}-%{release}
+Requires:	%{lib32gl} = %{version}-%{release}
+
+%description -n %{dev32name}
+GStreamer support libraries header files.
+%endif
+
 %prep
 %autosetup -p1
-
-%build
+%if %{with compat32}
+# FIXME we need to determine if any of the things
+# we're disabling here to avoid dependency bloat
+# could actually benefit wine
+%meson32 \
+	-Dtremor=disabled \
+	-Dexamples=disabled \
+	-Dgtk_doc=disabled \
+	-Dintrospection=disabled \
+	-Dgl-graphene=disabled \
+	-Dlibvisual=disabled \
+	-Dtheora=disabled \
+	-Dcdparanoia=disabled
+%endif
 export CXXFLAGS+="%{optflags} -std=gnu++14"
 %meson -Dtremor=disabled -Dexamples=disabled -Dgtk_doc=disabled
+
+%build
+%if %{with compat32}
+%ninja_build -C build32
+%endif
 %meson_build
 
 %if %{enable_check}
@@ -393,6 +586,9 @@ cd tests/check
 %endif
 
 %install
+%if %{with compat32}
+%ninja_install -C build32
+%endif
 %meson_install
 %find_lang %{name}-%{api}
 
@@ -565,4 +761,100 @@ cd tests/check
 %if %{build_libvisual}
 %files -n %{oname}-libvisual
 %{_libdir}/gstreamer-%{api}/libgstlibvisual.so
+%endif
+
+%if %{with compat32}
+%files -n %{lib32allocators}
+%{_prefix}/lib/libgstallocators-%{api}.so.%{major}*
+
+%files -n %{lib32app}
+%{_prefix}/lib/libgstapp-%{api}.so.%{major}*
+
+%files -n %{lib32audio}
+%{_prefix}/lib/libgstaudio-%{api}.so.%{major}*
+%{_prefix}/lib/gstreamer-%{api}/libgstalsa.so
+%{_prefix}/lib/gstreamer-%{api}/libgstadder.so
+%{_prefix}/lib/gstreamer-%{api}/libgstapp.so
+%{_prefix}/lib/gstreamer-%{api}/libgstaudioconvert.so
+%{_prefix}/lib/gstreamer-%{api}/libgstaudiorate.so
+%{_prefix}/lib/gstreamer-%{api}/libgstaudioresample.so
+%{_prefix}/lib/gstreamer-%{api}/libgstaudiotestsrc.so
+%{_prefix}/lib/gstreamer-%{api}/libgstaudiomixer.so
+%{_prefix}/lib/gstreamer-%{api}/libgstencoding.so
+%{_prefix}/lib/gstreamer-%{api}/libgstogg.so
+%{_prefix}/lib/gstreamer-%{api}/libgstopus.so
+%{_prefix}/lib/gstreamer-%{api}/libgstgio.so
+%{_prefix}/lib/gstreamer-%{api}/libgsttypefindfunctions.so
+%{_prefix}/lib/gstreamer-%{api}/libgstpbtypes.so
+%{_prefix}/lib/gstreamer-%{api}/libgstvolume.so
+%{_prefix}/lib/gstreamer-%{api}/libgstvorbis.so
+
+%files -n %{lib32fft}
+%{_prefix}/lib/libgstfft-%{api}.so.%{major}*
+
+%files -n %{lib32pbutils}
+%{_prefix}/lib/libgstpbutils-%{api}.so.%{major}*
+
+%files -n %{lib32riff}
+%{_prefix}/lib/libgstriff-%{api}.so.%{major}*
+
+%files -n %{lib32rtp}
+%{_prefix}/lib/libgstrtp-%{api}.so.%{major}*
+
+%files -n %{lib32rtsp}
+%{_prefix}/lib/libgstrtsp-%{api}.so.%{major}*
+
+%files -n %{lib32sdp}
+%{_prefix}/lib/libgstsdp-%{api}.so.%{major}*
+
+%files -n %{lib32tag}
+%{_prefix}/lib/libgsttag-%{api}.so.%{major}*
+
+%files -n %{lib32video}
+%{_prefix}/lib/libgstvideo-%{api}.so.%{major}*
+%{_prefix}/lib/gstreamer-%{api}/libgstpango.so
+%{_prefix}/lib/gstreamer-%{api}/libgstplayback.so
+%{_prefix}/lib/gstreamer-%{api}/libgstsubparse.so
+%{_prefix}/lib/gstreamer-%{api}/libgsttcp.so
+%{_prefix}/lib/gstreamer-%{api}/libgstvideoconvert.so
+%{_prefix}/lib/gstreamer-%{api}/libgstvideotestsrc.so
+%{_prefix}/lib/gstreamer-%{api}/libgstvideorate.so
+%{_prefix}/lib/gstreamer-%{api}/libgstvideoscale.so
+%{_prefix}/lib/gstreamer-%{api}/libgstopengl.so
+%{_prefix}/lib/gstreamer-%{api}/libgstximagesink.so
+%{_prefix}/lib/gstreamer-%{api}/libgstxvimagesink.so
+%{_prefix}/lib/gstreamer-%{api}/libgstrawparse.so
+
+%files -n %{lib32gl}
+%{_prefix}/lib/libgstgl-%{api}.so.%{major}*
+
+%files -n %{dev32name}
+%{_prefix}/lib/gstreamer-%{api}/include/gst/gl/gstglconfig.h
+%{_prefix}/lib/pkgconfig/gstreamer-allocators-%{api}.pc
+%{_prefix}/lib/pkgconfig/gstreamer-app-%{api}.pc
+%{_prefix}/lib/pkgconfig/gstreamer-audio-%{api}.pc
+%{_prefix}/lib/pkgconfig/gstreamer-fft-%{api}.pc
+%{_prefix}/lib/pkgconfig/gstreamer-pbutils-%{api}.pc
+%{_prefix}/lib/pkgconfig/gstreamer-plugins-base-%{api}.pc
+%{_prefix}/lib/pkgconfig/gstreamer-riff-%{api}.pc
+%{_prefix}/lib/pkgconfig/gstreamer-rtp-%{api}.pc
+%{_prefix}/lib/pkgconfig/gstreamer-rtsp-%{api}.pc
+%{_prefix}/lib/pkgconfig/gstreamer-sdp-%{api}.pc
+%{_prefix}/lib/pkgconfig/gstreamer-tag-%{api}.pc
+%{_prefix}/lib/pkgconfig/gstreamer-video-%{api}.pc
+%{_prefix}/lib/pkgconfig/gstreamer-gl-1.0.pc
+%{_prefix}/lib/libgstallocators-%{api}.so
+%{_prefix}/lib/libgstaudio-%{api}.so
+%{_prefix}/lib/libgstapp-%{api}.so
+%{_prefix}/lib/libgstfft-%{api}.so
+%{_prefix}/lib/libgstpbutils-%{api}.so
+%{_prefix}/lib/libgstriff-%{api}.so
+%{_prefix}/lib/libgstrtp-%{api}.so
+%{_prefix}/lib/libgstrtsp-%{api}.so
+%{_prefix}/lib/libgsttag-%{api}.so
+%{_prefix}/lib/libgstsdp-%{api}.so
+%{_prefix}/lib/libgstvideo-%{api}.so
+%{_prefix}/lib/libgstgl-%{api}.so
+%{_prefix}/lib/gstreamer-%{api}/libgstcompositor.so
+%{_prefix}/lib/gstreamer-%{api}/libgstoverlaycomposition.so
 %endif
