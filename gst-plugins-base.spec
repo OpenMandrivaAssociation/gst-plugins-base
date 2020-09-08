@@ -34,6 +34,9 @@
 %define libvideo %mklibname %{sname}video %{api} %{major}
 %define girvideo %mklibname %{sname}video-gir %{api}
 %define girgl %mklibname %{sname}gl-gir %{api}
+%define girglegl %mklibname %{sname}glegl-gir %{api}
+%define girglwayland %mklibname %{sname}glwayland-gir %{api}
+%define girglx11 %mklibname %{sname}glx11-gir %{api}
 %define libgl %mklibname %{sname}gl %{api} %{major}
 %define devname %mklibname %{name} %{api} -d
 
@@ -53,8 +56,8 @@
 
 Summary:	GStreamer Streaming-media framework plug-ins
 Name:		gst-plugins-base
-Version:	1.16.2
-Release:	3
+Version:	1.18.0
+Release:	1
 License:	LGPLv2+
 Group:		Sound
 Url:		http://gstreamer.freedesktop.org/
@@ -381,6 +384,27 @@ Group:		System/Libraries
 %description -n %{girgl}
 GObject Introspection interface libraries for %{girgl}
 
+%package -n %{girglegl}
+Summary:	GObject Introspection interface libraries for %{girglegl}
+Group:		System/Libraries
+
+%description -n %{girglegl}
+GObject Introspection interface libraries for %{girglegl}
+
+%package -n %{girglx11}
+Summary:	GObject Introspection interface libraries for %{girglx11}
+Group:		System/Libraries
+
+%description -n %{girglx11}
+GObject Introspection interface libraries for %{girglx11}
+
+%package -n %{girglwayland}
+Summary:	GObject Introspection interface libraries for %{girglwayland}
+Group:		System/Libraries
+
+%description -n %{girglwayland}
+GObject Introspection interface libraries for %{girglwayland}
+
 %package -n %{libgl}
 Summary:	Gstreamer plugin libraries for %{libgl}
 Group:		System/Libraries
@@ -568,10 +592,17 @@ GStreamer support libraries header files.
 	-Dgl-graphene=disabled \
 	-Dlibvisual=disabled \
 	-Dtheora=disabled \
-	-Dcdparanoia=disabled
+	-Dcdparanoia=disabled \
+	-Dtests=disabled \
+	-Ddoc=disabled
 %endif
 export CXXFLAGS+="%{optflags} -std=gnu++14"
-%meson -Dtremor=disabled -Dexamples=disabled -Dgtk_doc=disabled
+%meson \
+	-Dtremor=disabled \
+	-Dexamples=disabled \
+	-Dgtk_doc=disabled \
+	-Dtests=disabled \
+	-Ddoc=disabled
 
 %build
 %if %{with compat32}
@@ -672,36 +703,56 @@ cd tests/check
 
 %files -n %{girallocators}
 %{_libdir}/girepository-1.0/GstAllocators-%{api}.typelib
+%{_datadir}/gir-1.0/GstAllocators-%{api}.gir
 
 %files -n %{girapp}
 %{_libdir}/girepository-1.0/GstApp-%{api}.typelib
 
 %files -n %{giraudio}
 %{_libdir}/girepository-1.0/GstAudio-%{api}.typelib
+%{_datadir}/gir-1.0/GstAudio-%{api}.gir
 
 %files -n %{girpbutils}
 %{_libdir}/girepository-1.0/GstPbutils-%{api}.typelib
+%{_datadir}/gir-1.0/GstPbutils-%{api}.gir
 
 %files -n %{girrtp}
 %{_libdir}/girepository-1.0/GstRtp-%{api}.typelib
+%{_datadir}/gir-1.0/GstRtp-%{api}.gir
 
 %files -n %{girrtsp}
 %{_libdir}/girepository-1.0/GstRtsp-%{api}.typelib
+%{_datadir}/gir-1.0/GstRtsp-%{api}.gir
 
 %files -n %{girsdp}
 %{_libdir}/girepository-1.0/GstSdp-%{api}.typelib
+%{_datadir}/gir-1.0/GstSdp-%{api}.gir
 
 %files -n %{girtag}
 %{_libdir}/girepository-1.0/GstTag-%{api}.typelib
+%{_datadir}/gir-1.0/GstTag-%{api}.gir
 
 %files -n %{girvideo}
 %{_libdir}/girepository-1.0/GstVideo-%{api}.typelib
+%{_datadir}/gir-1.0/GstVideo-%{api}.gir
 
 %files -n %{girgl}
 %{_libdir}/girepository-1.0/GstGL-%{api}.typelib
+%{_datadir}/gir-1.0/GstGL-%{api}.gir
+
+%files -n %{girglegl}
+%{_libdir}/girepository-1.0/GstGLEGL-%{api}.typelib
+%{_datadir}/gir-1.0/GstGLEGL-%{api}.gir
+
+%files -n %{girglwayland}
+%{_libdir}/girepository-1.0/GstGLWayland-1.0.typelib
+%{_datadir}/gir-1.0/GstGLWayland-%{api}.gir
+
+%files -n %{girglx11}
+%{_libdir}/girepository-1.0/GstGLX11-1.0.typelib
+%{_datadir}/gir-1.0/GstGLX11-%{api}.gir
 
 %files -n %{devname}
-%doc docs/libs/html docs/plugins/html
 %{_includedir}/gstreamer-%{api}/gst/allocators
 %{_includedir}/gstreamer-%{api}/gst/app/
 %{_includedir}/gstreamer-%{api}/gst/audio
@@ -727,7 +778,11 @@ cd tests/check
 %{_libdir}/pkgconfig/gstreamer-sdp-%{api}.pc
 %{_libdir}/pkgconfig/gstreamer-tag-%{api}.pc
 %{_libdir}/pkgconfig/gstreamer-video-%{api}.pc
-%{_libdir}/pkgconfig/gstreamer-gl-1.0.pc
+%{_libdir}/pkgconfig/gstreamer-gl-egl-%{api}.pc
+%{_libdir}/pkgconfig/gstreamer-gl-prototypes-%{api}.pc
+%{_libdir}/pkgconfig/gstreamer-gl-wayland-%{api}.pc
+%{_libdir}/pkgconfig/gstreamer-gl-x11-%{api}.pc
+%{_libdir}/pkgconfig/gstreamer-gl-%{api}.pc
 %{_libdir}/libgstallocators-%{api}.so
 %{_libdir}/libgstaudio-%{api}.so
 %{_libdir}/libgstapp-%{api}.so
@@ -743,18 +798,6 @@ cd tests/check
 %{_libdir}/gstreamer-%{api}/libgstcompositor.so
 %{_libdir}/gstreamer-%{api}/libgstoverlaycomposition.so
 
-#% {_datadir}/gtk-doc/html/*
-%{_datadir}/gir-1.0/GstAllocators-%{api}.gir
-%{_datadir}/gir-1.0/GstApp-%{api}.gir
-%{_datadir}/gir-1.0/GstAudio-%{api}.gir
-%{_datadir}/gir-1.0/GstPbutils-%{api}.gir
-%{_datadir}/gir-1.0/GstRtp-%{api}.gir
-%{_datadir}/gir-1.0/GstRtsp-%{api}.gir
-%{_datadir}/gir-1.0/GstSdp-%{api}.gir
-%{_datadir}/gir-1.0/GstTag-%{api}.gir
-%{_datadir}/gir-1.0/GstVideo-%{api}.gir
-%{_datadir}/gir-1.0/GstGL-%{api}.gir
-
 %files -n %{oname}-cdparanoia
 %{_libdir}/gstreamer-%{api}/libgstcdparanoia.so
 
@@ -769,6 +812,7 @@ cd tests/check
 
 %files -n %{lib32app}
 %{_prefix}/lib/libgstapp-%{api}.so.%{major}*
+%{_datadir}/gir-1.0/GstApp-%{api}.gir
 
 %files -n %{lib32audio}
 %{_prefix}/lib/libgstaudio-%{api}.so.%{major}*
@@ -842,7 +886,12 @@ cd tests/check
 %{_prefix}/lib/pkgconfig/gstreamer-sdp-%{api}.pc
 %{_prefix}/lib/pkgconfig/gstreamer-tag-%{api}.pc
 %{_prefix}/lib/pkgconfig/gstreamer-video-%{api}.pc
-%{_prefix}/lib/pkgconfig/gstreamer-gl-1.0.pc
+%{_prefix}/lib/pkgconfig/gstreamer-gl-%{api}.pc
+%{_prefix}/lib/pkgconfig/gstreamer-gl-egl-%{api}.pc
+%{_prefix}/lib/pkgconfig/gstreamer-gl-prototypes-%{api}.pc
+%{_prefix}/lib/pkgconfig/gstreamer-gl-wayland-%{api}.pc
+%{_prefix}/lib/pkgconfig/gstreamer-gl-x11-%{api}.pc
+
 %{_prefix}/lib/libgstallocators-%{api}.so
 %{_prefix}/lib/libgstaudio-%{api}.so
 %{_prefix}/lib/libgstapp-%{api}.so
