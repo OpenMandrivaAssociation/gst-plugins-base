@@ -74,7 +74,7 @@ BuildRequires:	pkgconfig(check)
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(glu)
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
-BuildRequires:	pkgconfig(gstreamer-1.0)
+BuildRequires:	pkgconfig(gstreamer-1.0) >= 1.18.0
 BuildRequires:	pkgconfig(gtk+-2.0)
 BuildRequires:	pkgconfig(libpng)
 BuildRequires:	pkgconfig(opus)
@@ -89,6 +89,7 @@ BuildRequires:	pkgconfig(sdl2)
 BuildRequires:	pkgconfig(libdrm)
 BuildRequires:	pkgconfig(gbm)
 BuildRequires:	kernel-release-headers
+BuildRequires:	git-core
 %if %{build_libvisual}
 BuildRequires:	pkgconfig(libvisual-0.4) >= 0.4
 %endif
