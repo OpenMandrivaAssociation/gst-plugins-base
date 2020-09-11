@@ -708,6 +708,7 @@ cd tests/check
 
 %files -n %{girapp}
 %{_libdir}/girepository-1.0/GstApp-%{api}.typelib
+%{_datadir}/gir-1.0/GstApp-%{api}.gir
 
 %files -n %{giraudio}
 %{_libdir}/girepository-1.0/GstAudio-%{api}.typelib
