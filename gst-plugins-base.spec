@@ -139,7 +139,7 @@ BuildRequires:	devel(libgio-2.0)
 BuildRequires:	devel(libmount)
 BuildRequires:	devel(libblkid)
 BuildRequires:	devel(libgstreamer-1.0)
-BuildRequires:	devel(libunwind)
+BuildRequires:	libunwind-nongnu-devel
 BuildRequires:	devel(libdw)
 BuildRequires:	devel(libgmodule-2.0)
 BuildRequires:	devel(libpcre)
