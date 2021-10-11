@@ -585,7 +585,7 @@ GStreamer support libraries header files.
 # FIXME we need to determine if any of the things
 # we're disabling here to avoid dependency bloat
 # could actually benefit wine
-%meson32 \
+%meson32 --debug \
 	-Dtremor=disabled \
 	-Dexamples=disabled \
 	-Dgtk_doc=disabled \
@@ -597,6 +597,7 @@ GStreamer support libraries header files.
 	-Dtests=disabled \
 	-Ddoc=disabled
 %endif
+
 export CXXFLAGS+="%{optflags} -std=gnu++14"
 %meson \
 	-Dtremor=disabled \
@@ -632,9 +633,9 @@ cd tests/check
 %dir %{_datadir}/gst-plugins-base
 %dir %{_datadir}/gst-plugins-base/%{api}
 %{_datadir}/gst-plugins-base/%{api}/license-translations.dict
-%{_mandir}/man1/gst-device-monitor-%{api}.1*
-%{_mandir}/man1/gst-play-%{api}.1*
-%{_mandir}/man1/gst-discoverer-%{api}.1*
+%doc %{_mandir}/man1/gst-device-monitor-%{api}.1*
+%doc %{_mandir}/man1/gst-play-%{api}.1*
+%doc %{_mandir}/man1/gst-discoverer-%{api}.1*
 # non-core plugins without external dependencies
 %{_libdir}/gstreamer-%{api}/libgstalsa.so
 %{_libdir}/gstreamer-%{api}/libgstadder.so
