@@ -56,12 +56,12 @@
 
 Summary:	GStreamer Streaming-media framework plug-ins
 Name:		gst-plugins-base
-Version:	1.19.2
+Version:	1.19.3
 Release:	1
 License:	LGPLv2+
 Group:		Sound
 Url:		http://gstreamer.freedesktop.org/
-Source0:	https://gitlab.freedesktop.org/gstreamer/gst-plugins-base/-/archive/%{version}/gst-plugins-base-%{version}.tar.bz2
+Source0:	https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-%{version}.tar.xz
 Patch0:		align.patch
 BuildRequires:	cdda-devel
 BuildRequires:	meson
