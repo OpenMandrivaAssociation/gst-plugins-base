@@ -588,7 +588,6 @@ GStreamer support libraries header files.
 %meson32 --debug \
 	-Dtremor=disabled \
 	-Dexamples=disabled \
-	-Dgtk_doc=disabled \
 	-Dintrospection=disabled \
 	-Dgl-graphene=disabled \
 	-Dlibvisual=disabled \
@@ -602,7 +601,6 @@ export CXXFLAGS+="%{optflags} -std=gnu++14"
 %meson \
 	-Dtremor=disabled \
 	-Dexamples=disabled \
-	-Dgtk_doc=disabled \
 	-Dtests=disabled \
 	-Ddoc=disabled
 
