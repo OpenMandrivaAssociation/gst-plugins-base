@@ -56,7 +56,7 @@
 
 Summary:	GStreamer Streaming-media framework plug-ins
 Name:		gst-plugins-base
-Version:	1.19.3
+Version:	1.20.0
 Release:	1
 License:	LGPLv2+
 Group:		Sound
@@ -74,7 +74,7 @@ BuildRequires:	pkgconfig(check)
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(glu)
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
-BuildRequires:	pkgconfig(gstreamer-1.0) >= 1.18.0
+BuildRequires:	pkgconfig(gstreamer-1.0) >= 1.20.0
 BuildRequires:	pkgconfig(gtk+-2.0)
 BuildRequires:	pkgconfig(libpng)
 BuildRequires:	pkgconfig(opus)
