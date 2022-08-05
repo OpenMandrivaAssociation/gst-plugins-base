@@ -602,6 +602,7 @@ GStreamer support libraries header files.
 export CXXFLAGS+="%{optflags} -std=gnu++14"
 %meson \
 	-Dtremor=disabled \
+	-Dpango=disabled \
 	-Dexamples=disabled \
 	-Dtests=disabled \
 	-Ddoc=disabled
