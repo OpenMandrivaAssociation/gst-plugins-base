@@ -626,7 +626,7 @@ cd tests/check
 %find_lang %{name}-%{api}
 
 %files -n %{oname}-plugins-base -f %{name}-%{api}.lang
-%doc AUTHORS COPYING README NEWS
+%doc AUTHORS COPYING README* NEWS
 %{_bindir}/gst-device-monitor-%{api}
 %{_bindir}/gst-discoverer-%{api}
 %{_bindir}/gst-play-%{api}
