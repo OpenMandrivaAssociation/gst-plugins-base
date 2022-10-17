@@ -56,7 +56,7 @@
 
 Summary:	GStreamer Streaming-media framework plug-ins
 Name:		gst-plugins-base
-Version:	1.20.3
+Version:	1.21.1
 Release:	1
 License:	LGPLv2+
 Group:		Sound
@@ -90,7 +90,7 @@ BuildRequires:	pkgconfig(wayland-protocols)
 BuildRequires:	pkgconfig(sdl2)
 BuildRequires:	pkgconfig(libdrm)
 BuildRequires:	pkgconfig(gbm)
-BuildRequires:	kernel-release-headers
+BuildRequires:	kernel-headers
 BuildRequires:	git-core
 %if %{build_libvisual}
 BuildRequires:	pkgconfig(libvisual-0.4) >= 0.4
@@ -654,10 +654,9 @@ cd tests/check
 %{_libdir}/gstreamer-%{api}/libgsttcp.so
 %{_libdir}/gstreamer-%{api}/libgsttheora.so
 %{_libdir}/gstreamer-%{api}/libgsttypefindfunctions.so
-%{_libdir}/gstreamer-%{api}/libgstvideoconvert.so
+%{_libdir}/gstreamer-%{api}/libgstvideoconvertscale.so
 %{_libdir}/gstreamer-%{api}/libgstvideotestsrc.so
 %{_libdir}/gstreamer-%{api}/libgstvideorate.so
-%{_libdir}/gstreamer-%{api}/libgstvideoscale.so
 %{_libdir}/gstreamer-%{api}/libgstopengl.so
 %{_libdir}/gstreamer-%{api}/libgstvolume.so
 %{_libdir}/gstreamer-%{api}/libgstvorbis.so
@@ -863,10 +862,9 @@ cd tests/check
 %{_prefix}/lib/gstreamer-%{api}/libgstplayback.so
 %{_prefix}/lib/gstreamer-%{api}/libgstsubparse.so
 %{_prefix}/lib/gstreamer-%{api}/libgsttcp.so
-%{_prefix}/lib/gstreamer-%{api}/libgstvideoconvert.so
+%{_prefix}/lib/gstreamer-%{api}/libgstvideoconvertscale.so
 %{_prefix}/lib/gstreamer-%{api}/libgstvideotestsrc.so
 %{_prefix}/lib/gstreamer-%{api}/libgstvideorate.so
-%{_prefix}/lib/gstreamer-%{api}/libgstvideoscale.so
 %{_prefix}/lib/gstreamer-%{api}/libgstopengl.so
 %{_prefix}/lib/gstreamer-%{api}/libgstximagesink.so
 %{_prefix}/lib/gstreamer-%{api}/libgstxvimagesink.so
