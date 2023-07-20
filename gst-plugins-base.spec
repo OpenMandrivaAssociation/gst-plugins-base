@@ -56,7 +56,7 @@
 
 Summary:	GStreamer Streaming-media framework plug-ins
 Name:		gst-plugins-base
-Version:	1.22.4
+Version:	1.22.5
 Release:	1
 License:	LGPLv2+
 Group:		Sound
