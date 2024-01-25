@@ -65,6 +65,7 @@ Source0:	https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base
 Patch0:		align.patch
 BuildRequires:	cdda-devel
 BuildRequires:	meson
+BuildRequires:	gettext
 BuildRequires:	iso-codes-devel
 BuildRequires:	pkgconfig(libjpeg)
 BuildRequires:	pkgconfig(graphene-1.0)
