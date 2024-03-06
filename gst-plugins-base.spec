@@ -653,6 +653,8 @@ cd tests/check
 %{_libdir}/gstreamer-%{api}/libgstaudioresample.so
 %{_libdir}/gstreamer-%{api}/libgstaudiotestsrc.so
 %{_libdir}/gstreamer-%{api}/libgstaudiomixer.so
+%{_libdir}/gstreamer-%{api}/libgstbasedebug.so
+%{_libdir}/gstreamer-%{api}/libgstdsd.so
 %{_libdir}/gstreamer-%{api}/libgstgio.so
 %{_libdir}/gstreamer-%{api}/libgstogg.so
 %{_libdir}/gstreamer-%{api}/libgstopus.so
@@ -834,6 +836,8 @@ cd tests/check
 %{_prefix}/lib/gstreamer-%{api}/libgstaudioresample.so
 %{_prefix}/lib/gstreamer-%{api}/libgstaudiotestsrc.so
 %{_prefix}/lib/gstreamer-%{api}/libgstaudiomixer.so
+%{_prefix}/lib/gstreamer-%{api}/libgstbasedebug.so
+%{_prefix}/lib/gstreamer-%{api}/libgstdsd.so
 %{_prefix}/lib/gstreamer-%{api}/libgstencoding.so
 %{_prefix}/lib/gstreamer-%{api}/libgstogg.so
 %{_prefix}/lib/gstreamer-%{api}/libgstopus.so
