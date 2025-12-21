@@ -63,6 +63,7 @@ Group:		Sound
 Url:		https://gstreamer.freedesktop.org/
 Source0:	https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-%{version}.tar.xz
 Patch0:		align.patch
+BuildRequires:	make
 BuildRequires:	cdda-devel
 BuildRequires:	meson
 BuildRequires:	gettext
