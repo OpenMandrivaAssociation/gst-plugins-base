@@ -153,7 +153,7 @@ BuildRequires:	devel(libgstreamer-1.0)
 BuildRequires:	libunwind-nongnu-devel
 BuildRequires:	devel(libdw)
 BuildRequires:	devel(libgmodule-2.0)
-BuildRequires:	devel(libpcre)
+BuildRequires:	devel(libpcre2-8)
 BuildRequires:	devel(libgobject-2.0)
 BuildRequires:	devel(libgstbase-1.0)
 BuildRequires:	devel(liborc-0.4)
