@@ -120,6 +120,8 @@ BuildRequires:	gtk-doc
 BuildRequires:	fonts-ttf-dejavu
 %endif
 %if %{with compat32}
+# clang -m32 links through the i686 cross sysroot.
+BuildRequires:	cross-i686-openmandriva-linux-gnu-clang
 BuildRequires:	devel(libjpeg)
 BuildRequires:	devel(libvorbis)
 BuildRequires:	devel(libogg)
